@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "config-plugin-ssl-pinning": ["../src/index"],
+      "config-plugin-ssl-pinning/*": ["../src/*"]
+    }
+  }
+}
