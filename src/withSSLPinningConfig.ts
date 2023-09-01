@@ -9,7 +9,7 @@ export const withSSLPinningConfig: ConfigPlugin<{
     certificateSHARoot: string;
   };
 }> = (config, { sslConfig }) => {
-  const path = "modules/security/android/sslpinning.properties";
+  const path = "android/sslpinning.properties";
   if (fs.existsSync(path)) {
     fs.unlinkSync(path);
   }
