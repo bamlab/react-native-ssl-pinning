@@ -28,7 +28,9 @@
   "author": "Hugo Khlaut <hugo.khlaut@student-cs.fr> (https://github.com/Eucalypso)",
   "license": "MIT",
   "homepage": "https://github.com/bamlab/config-plugin-ssl-pinning#readme",
-  "dependencies": {},
+  "dependencies": {
+    "@expo/config-plugins": "^7.2.5"
+  },
   "devDependencies": {
     "@types/react": "^18.0.25",
     "expo-module-scripts": "^3.0.11",
