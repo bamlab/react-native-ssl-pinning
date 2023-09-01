@@ -1,9 +1,9 @@
 {
-  "name": "config-plugin-ssl-pinning",
+  "name": "@bam.tech/config-plugin-ssl-pinning",
   "version": "0.1.0",
   "description": "SSLPinning config for expo",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/withSSLPinningConfig.js",
+  "types": "build/withSSLPinningConfig.d.ts",
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
