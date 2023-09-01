@@ -2,7 +2,7 @@ const fs = require('fs');
 
 import { ConfigPlugin } from "@expo/config-plugins";
 
-const withSSLPinningConfig: ConfigPlugin<{
+export const withSSLPinningConfig: ConfigPlugin<{
   sslConfig: {
     hostName: string;
     certificateSHAFinal: string;

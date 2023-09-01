@@ -4,6 +4,7 @@
   "description": "SSLPinning config for expo",
   "main": "build/withSSLPinningConfig.js",
   "types": "build/withSSLPinningConfig.d.ts",
+  "homePage": "https://github.com/bamlab/config-plugin-ssl-pinning",
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
@@ -15,6 +16,10 @@
     "open:ios": "open -a \"Xcode\" example/ios",
     "open:android": "open -a \"Android Studio\" example/android"
   },
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
   "keywords": [
     "react-native",
     "expo",

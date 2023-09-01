@@ -1,1 +1,1 @@
-{"version":3,"file":"withSSLPinningConfig.d.ts","sourceRoot":"","sources":["../src/withSSLPinningConfig.ts"],"names":[],"mappings":""}
+{"version":3,"file":"withSSLPinningConfig.d.ts","sourceRoot":"","sources":["../src/withSSLPinningConfig.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,YAAY,EAAE,MAAM,sBAAsB,CAAC;AAEpD,eAAO,MAAM,oBAAoB,EAAE,YAAY,CAAC;IAC9C,SAAS,EAAE;QACT,QAAQ,EAAE,MAAM,CAAC;QACjB,mBAAmB,EAAE,MAAM,CAAC;QAC5B,0BAA0B,EAAE,MAAM,CAAC;QACnC,kBAAkB,EAAE,MAAM,CAAC;KAC5B,CAAC;CACH,CAeA,CAAC"}
