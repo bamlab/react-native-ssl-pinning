@@ -4,7 +4,9 @@
   "compilerOptions": {
     "outDir": "./build",
     "rootDir": "src",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "module": "CommonJS",
+    "types": ["node"]
   },
   "include": ["./src"],
   "exclude": ["**/__mocks__/*", "**/__tests__/*", "**/__stories__/*"]

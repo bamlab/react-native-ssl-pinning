@@ -1,5 +1,4 @@
-const fs = require('fs');
-
+import fs from "fs";
 import { ConfigPlugin } from "@expo/config-plugins";
 
 export const withSSLPinningConfig: ConfigPlugin<{
