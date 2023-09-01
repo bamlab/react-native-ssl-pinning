@@ -85,5 +85,8 @@ repositories {
 
 dependencies {
   implementation project(':expo-modules-core')
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}")
+  implementation("com.squareup.okhttp3:okhttp:+")
+  implementation("com.facebook.react:react-native:+")
+  implementation("com.appmattus.certificatetransparency:certificatetransparency:+")
 }
