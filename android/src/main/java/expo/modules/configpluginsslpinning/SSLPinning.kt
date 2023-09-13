@@ -15,12 +15,16 @@ public class SSLPinning : OkHttpClientFactory {
 
         val hostname = BuildConfig.hostName;
 
-        //Certificates must start with 'sha256/' for android
-         val certificatePinner = CertificatePinner.Builder()
-            .add(hostname, "sha256/" + BuildConfig.certificateSHAFinal)
-            .add(hostname, "sha256/" + BuildConfig.certificateSHAIntermediate)
-            .add(hostname, "sha256/" + BuildConfig.certificateSHARoot)
-            .build()
+        val certificateList = BuildConfig.certificates.split(",").map { it.trim() }
+
+        val certificatePinnerBuilder = CertificatePinner.Builder()
+
+        for (certificate in certificateList) {
+            //Certificates must start with 'sha256/' for android
+            certificatePinnerBuilder.add(hostname, "sha256/$certificate")
+        }
+
+        val certificatePinner = certificatePinnerBuilder.build()
 
         val clientBuilder = OkHttpClientProvider.createClientBuilder()
 
