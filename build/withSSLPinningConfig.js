@@ -1,23 +1,56 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.withSSLPinningConfig = void 0;
-const fs_1 = __importDefault(require("fs"));
-const withSSLPinningConfig = (config, { sslConfig }) => {
-    const path = "modules/security/android/sslpinning.properties";
-    if (fs_1.default.existsSync(path)) {
-        fs_1.default.unlinkSync(path);
-    }
-    // Create the ssl.properties file from the sslConfig object
-    let data = "";
+const { withGradleProperties } = require("@expo/config-plugins");
+const withSSLPinningConfig = (config, sslConfig) => {
+    validateCertificatesAndHostname(sslConfig?.certificates, sslConfig?.hostName);
+    const newGraddleProperties = [];
     for (const [key, value] of Object.entries(sslConfig)) {
-        data += `${key}=${value}\n`;
+        newGraddleProperties.push({
+            type: "property",
+            key: key,
+            value: value,
+        });
     }
-    // Write file in a sync way makes pod crashes
-    fs_1.default.writeFile(path, data, { encoding: "utf8" }, () => { });
-    return config;
+    return withGradleProperties(config, (config) => {
+        newGraddleProperties.map((gradleProperty) => config.modResults.push(gradleProperty));
+        return config;
+    });
 };
-exports.withSSLPinningConfig = withSSLPinningConfig;
+exports.default = withSSLPinningConfig;
+class SSLPinningConfigError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "SSLPinningConfigError";
+    }
+}
+const validateCertificatesAndHostname = (certificates, hostName) => {
+    if (!certificates || certificates.length === 0) {
+        throw new SSLPinningConfigError('The attribute "certificates" is empty or undefined, please add the fingerprints of your certificates to the plugin inputs :\n' +
+            "[\n" +
+            "'@bam.tech/react-native-ssl-pinning',\n" +
+            "  {\n" +
+            '    hostName: "yourhostName",\n' +
+            "    certificates: [\n" +
+            "      certificateSHAFinal,\n" +
+            "      certificateSHAIntermediate,\n" +
+            "      certificateSHARoot,\n" +
+            "    ],\n" +
+            "  },\n" +
+            "]");
+    }
+    if (!hostName || hostName.trim() === "") {
+        throw new SSLPinningConfigError('The attribute "hostName" is empty or undefined, please add it to the config inputs :\n' +
+            "[\n" +
+            "'@bam.tech/react-native-ssl-pinning',\n" +
+            "  {\n" +
+            '    hostName: "yourhostName",\n' +
+            "    certificates: [\n" +
+            "      certificateSHAFinal,\n" +
+            "      certificateSHAIntermediate,\n" +
+            "      certificateSHARoot,\n" +
+            "    ],\n" +
+            "  },\n" +
+            "]");
+    }
+};
 //# sourceMappingURL=withSSLPinningConfig.js.map

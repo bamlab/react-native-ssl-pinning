@@ -1,10 +1,3 @@
-import { ConfigPlugin } from "@expo/config-plugins";
-export declare const withSSLPinningConfig: ConfigPlugin<{
-    sslConfig: {
-        hostName: string;
-        certificateSHAFinal: string;
-        certificateSHAIntermediate: string;
-        certificateSHARoot: string;
-    };
-}>;
+declare const withSSLPinningConfig: (config: any, sslConfig: any) => any;
+export default withSSLPinningConfig;
 //# sourceMappingURL=withSSLPinningConfig.d.ts.map
