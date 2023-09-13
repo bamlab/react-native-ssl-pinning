@@ -28,11 +28,9 @@ public class SSLPinning : OkHttpClientFactory {
 
         val clientBuilder = OkHttpClientProvider.createClientBuilder()
 
-        //Certificate transparency implemented with addNetworkInterceptor
         return clientBuilder
             .certificatePinner(certificatePinner)
             .cookieJar(ReactCookieJarContainer())
-            .addNetworkInterceptor(CTInterceptorBuilder().build())
             .build()
     }
 
