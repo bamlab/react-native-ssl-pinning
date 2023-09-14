@@ -1,5 +1,5 @@
 {
-  "name": "@bam.tech/config-plugin-ssl-pinning",
+  "name": "@bam.tech/react-native-ssl-pinning",
   "version": "0.1.0",
   "description": "SSLPinning config for expo",
   "main": "build/withSSLPinningConfig.js",
@@ -23,10 +23,13 @@
   "keywords": [
     "react-native",
     "expo",
-    "config-plugin-ssl-pinning",
+    "react-native-ssl-pinning",
     "SSLPinning"
   ],
-  "repository": "https://github.com/bamlab/config-plugin-ssl-pinning",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bamlab/config-plugin-ssl-pinning.git"
+  },
   "bugs": {
     "url": "https://github.com/bamlab/config-plugin-ssl-pinning/issues"
   },
@@ -45,5 +48,8 @@
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "directories": {
+    "example": "example"
   }
 }
