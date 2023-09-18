@@ -1,6 +1,5 @@
 package expo.modules.configpluginsslpinning;
 
-import com.appmattus.certificatetransparency.CTInterceptorBuilder;
 import com.facebook.react.modules.network.OkHttpClientFactory;
 import com.facebook.react.modules.network.OkHttpClientProvider;
 import com.facebook.react.modules.network.ReactCookieJarContainer;
