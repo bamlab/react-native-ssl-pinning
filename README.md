@@ -13,24 +13,21 @@ This module implements SSL Pinning using an expo-module and an expo-plugin
    ```
 
 
-1. In your `app.config.ts` file, add the following attributes
+1. In your `app.config.ts` file, add the following attributes.
 
    ```ts
-   // Selection of your current environment
-   const scheme = schemeConfig.firstEnv;
-
    const config: ExpoConfig = {
      ios: {
        infoPlist: {
          TSKConfiguration: {
            TSKPinnedDomains: {
-             [scheme.hostName]: {
+             [hostName]: {
                TSKEnforcePinning: true,
                TSKIncludeSubdomains: true,
                TSKPublicKeyHashes: [
-                 scheme.certificateSHAFinal,
-                 scheme.certificateSHAIntermediate,
-                 scheme..certificateSHARoot,
+                 certificateSHAFinal,
+                 certificateSHAIntermediate,
+                 certificateSHARoot,
                ],
              },
            },
@@ -42,11 +39,11 @@ This module implements SSL Pinning using an expo-module and an expo-plugin
        [
          '@bam.tech/react-native-ssl-pinning',
          {
-          hostName: scheme.hostName,
+          hostName: hostName, 
           certificates: [
-            scheme.certificateSHAFinal,
-            scheme.certificateSHAIntermediate,
-            scheme.certificateSHARoot,
+            certificateSHAFinal,
+            certificateSHAIntermediate,
+            certificateSHARoot,
             ],
          },
        ],
