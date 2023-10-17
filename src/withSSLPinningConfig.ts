@@ -1,10 +1,7 @@
 const { withGradleProperties } = require("@expo/config-plugins");
 
-const withSSLPinningConfig = (config, sslConfig ) => {
-  validateCertificatesAndHostname(
-      sslConfig?.certificates,
-      sslConfig?.hostName
-    );
+const withSSLPinningConfig = (config, sslConfig) => {
+  validateCertificatesAndHostname(sslConfig?.certificates, sslConfig?.hostName);
   const newGraddleProperties: Array<any> = [];
   for (const [key, value] of Object.entries(sslConfig)) {
     newGraddleProperties.push({
@@ -19,7 +16,33 @@ const withSSLPinningConfig = (config, sslConfig ) => {
       config.modResults.push(gradleProperty)
     );
 
-    return config;
+    const configWithIos = {
+      ...config,
+      ios: {
+        ...config?.ios,
+        infoPlist: {
+          ...config?.ios?.infoPlist,
+          TSKConfiguration: {
+            ...config?.ios?.infoPlist?.TSKConfiguration,
+            TSKPinnedDomains: {
+              ...config?.ios?.infoPlist?.TSKConfiguration?.TSKPinnedDomains,
+              [sslConfig.hostName]: {
+                TSKEnforcePinning: true,
+                TSKIncludeSubdomains: true,
+                TSKPublicKeyHashes: sslConfig.certificates,
+                ...config?.ios?.infoPlist?.TSKConfiguration?.TSKPinnedDomains?.[
+                  sslConfig.hostName
+                ],
+              },
+            },
+            TSKSwizzleNetworkDelegates: true,
+            ...config?.ios?.infoPlist?.TSKConfiguration,
+          },
+        },
+      },
+    };
+
+    return configWithIos;
   });
 };
 
@@ -70,4 +93,3 @@ const validateCertificatesAndHostname = (
     );
   }
 };
-
