@@ -1,6 +1,6 @@
 {
   "name": "@bam.tech/react-native-ssl-pinning",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "SSLPinning config for expo",
   "main": "build/withSSLPinningConfig.js",
   "types": "build/withSSLPinningConfig.d.ts",
