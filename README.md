@@ -1,4 +1,6 @@
-# react-native-ssl-pinning
+# ⛔️ [DEPRECATED] react-native-ssl-pinning
+
+**This package has been superseeded by [react-native-app-security](https://github.com/bamlab/react-native-app-security). Please head there for a more up-to-date SSL pinning implementation.**
 
 ## Overview
 
